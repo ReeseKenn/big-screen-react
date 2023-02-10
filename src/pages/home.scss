@@ -20,14 +20,17 @@
   }
 
   main {
-    padding-top: px(5);
+    padding-top: px(14);
+    padding-left: px(32);
+    padding-right: px(32);
     flex: 1;
     display: grid;
     grid-template:
-      "box1 box2 box4 box5" 755fr
-      "box3 box3 box4 box5" 363fr / 366fr 361fr 811fr 747fr;
-    grid-column-gap: px(28);
-    grid-row-gap: px(28);
+      "box1 box4 box6" 1fr
+      "box2 box4 box7" 1fr
+      "box3 box5 box8" 1fr / 333fr 569fr 444fr;
+    grid-column-gap: px(32);
+    grid-row-gap: px(32);
 
     .bordered {
       border: 1px solid #33cccc;
@@ -57,6 +60,22 @@
 
     > .section1 {
       grid-area: box1;
+      display: flex;
+      flex-direction: column;
+
+      h2 {
+        flex-shrink: 0;
+        font-size: px(20);
+        line-height: px(20);
+        padding: px(10) px(28);
+        text-shadow: 0 0 px(3) #33cccc;
+        background: linear-gradient(to right, #2b9f9f 0%, transparent 100%);
+      }
+
+      .chart {
+        flex: 1;
+        width: 100%;
+      }
     }
 
     > .section2 {
@@ -75,25 +94,18 @@
       grid-area: box5;
     }
 
-    .sectionA {
-      display: flex;
-      flex-direction: column;
-      height: px(315);
-
-      h2 {
-        flex-shrink: 0;
-        font-size: px(20);
-        line-height: px(20);
-        padding: px(10) px(28);
-        text-shadow: 0 0 px(3) #33cccc;
-        background: linear-gradient(to right, #2b9f9f 0%, transparent 100%);
-      }
-
-      .chart {
-        flex: 1;
-        width: 100%;
-      }
+    > .section6 {
+      grid-area: box6;
     }
+
+    > .section7 {
+      grid-area: box7;
+    }
+
+    > .section8 {
+      grid-area: box8;
+    }
+
   }
 
   footer {
