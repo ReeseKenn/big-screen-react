@@ -1,12 +1,14 @@
 import React, {useEffect, useRef} from 'react';
 import './home.scss';
 import headerBg from '../images/headerBg.png';
+import bg from '../images/bg.png';
 import * as echarts from 'echarts';
 
-const px = (n) => n / 2420 * (window as any).pageWidth;
+const px = (n) => n / 960 * (window as any).pageWidth;
 
 export const Home = () => {
     const divRef = useRef(null)
+    const year = new Date().getFullYear()
     useEffect(() => {
         console.log(divRef.current);
         // 基于准备好的dom，初始化echarts实例
@@ -65,20 +67,24 @@ export const Home = () => {
     })
 
     return (
-        <div className="home">
+        <div className="home" style={{backgroundImage: `url(${bg})`}}>
             <header style={{backgroundImage: `url(${headerBg})`}}>启程跨境运营战略平台</header>
             <main>
                 <section className="section1">
-                    <div className="bordered sectionA">
-                        <h2 className="title">订单成交数统计</h2>
-                        <div ref={divRef} className="chart">123</div>
-                    </div>
+                    <h2 className="title">订单成交数统计
+                        <div className="parallelogram"/>
+                    </h2>
+                    <div ref={divRef} className="chart">123</div>
                 </section>
                 <section className="bordered section2">2</section>
                 <section className="bordered section3">3</section>
                 <section className="bordered section4">4</section>
                 <section className="bordered section5">5</section>
+                <section className="bordered section6">6</section>
+                <section className="bordered section7">7</section>
+                <section className="bordered section8">8</section>
             </main>
+            <footer> &copy; yan {year}</footer>
         </div>
     );
 };
