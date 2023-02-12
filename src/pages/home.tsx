@@ -71,7 +71,7 @@ export const Home = () => {
         <div className="home" style={{backgroundImage: `url(${bg})`}}>
             <header style={{backgroundImage: `url(${headerBg})`}}>启程跨境运营战略平台</header>
             <main>
-                <section className="section1">
+                <section className="bordered section1">
                     <Title title="订单成交数统计"/>
                     <div ref={divRef} className="chart">123</div>
                 </section>

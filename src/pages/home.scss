@@ -33,6 +33,23 @@
     grid-row-gap: px(16);
 
     .bordered {
+      background: rgba(68, 97, 96, 0.1);
+      border: 1px solid;
+      border-image: linear-gradient(370deg, rgba(255, 255, 255, 0) 0%, #182b29 20%, rgba(255, 255, 255, 0) 99%) 2 2 2 2;
+      position: relative;
+
+      &::after {
+        content: '';
+        width: 4px;
+        height: 4px;
+        background: #2c8a88;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+      }
+    }
+
+    .other-bordered {
       border: 1px solid #33cccc;
       border-radius: 4px;
       position: relative;
@@ -63,7 +80,7 @@
       display: flex;
       flex-direction: column;
       height: px(161);
-      
+
 
       .chart {
         flex: 1;
