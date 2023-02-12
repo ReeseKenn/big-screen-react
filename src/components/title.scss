@@ -29,16 +29,6 @@
     margin: px(2);
     width: px(4);
     height: px(7);
-    position: relative;
-  }
-
-  .parallelogram::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
     background-color: #55d2d3;
     transform: skewX(45deg);
   }
