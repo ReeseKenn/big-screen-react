@@ -1,0 +1,49 @@
+@import "../shared/helper";
+
+.title {
+  flex-shrink: 0;
+  line-height: px(21);
+  padding-right: px(6);
+  height: px(21);
+  text-shadow: 0 0 px(3) #33cccc;
+  background: linear-gradient(to right, rgb(43, 159, 159, 0.7) 0%, transparent 100%);
+  border-left: px(3) solid #6ad7d9;
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  .triangle {
+    margin-left: px(8);
+    width: 0;
+    height: 0;
+    border: px(4) solid transparent;
+    border-left-color: #dcffff;
+  }
+
+  h2 {
+    flex: 1;
+    font-size: 1rem;
+  }
+
+  .parallelogram {
+    margin: px(2);
+    width: px(4);
+    height: px(7);
+    position: relative;
+  }
+
+  .parallelogram::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #55d2d3;
+    transform: skewX(45deg);
+  }
+
+  .opacity {
+    opacity: 0.3;
+  }
+}

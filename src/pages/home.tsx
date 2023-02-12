@@ -3,6 +3,7 @@ import './home.scss';
 import headerBg from '../images/headerBg.png';
 import bg from '../images/bg.png';
 import * as echarts from 'echarts';
+import {Title} from "../components/title";
 
 const px = (n) => n / 960 * (window as any).pageWidth;
 
@@ -71,12 +72,12 @@ export const Home = () => {
             <header style={{backgroundImage: `url(${headerBg})`}}>启程跨境运营战略平台</header>
             <main>
                 <section className="section1">
-                    <h2 className="title">订单成交数统计
-                        <div className="parallelogram"/>
-                    </h2>
+                    <Title title="订单成交数统计"/>
                     <div ref={divRef} className="chart">123</div>
                 </section>
-                <section className="bordered section2">2</section>
+                <section className="bordered section2">
+                    <Title title="产品大类占比"/>
+                </section>
                 <section className="bordered section3">3</section>
                 <section className="bordered section4">4</section>
                 <section className="bordered section5">5</section>
