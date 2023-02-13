@@ -75,17 +75,18 @@
       }
     }
 
-    > .section1 {
-      grid-area: box1;
+    section {
       display: flex;
       flex-direction: column;
-      height: px(161);
-
 
       .chart {
         flex: 1;
         width: 100%;
       }
+    }
+
+    > .section1 {
+      grid-area: box1;
     }
 
     > .section2 {
