@@ -4,7 +4,7 @@ export const baseEchartOptions = {
 
     textStyle: {
         fontSize: px(8),
-        color: '#79839E'
+        color: '#475d72'
     },
     title: {show: false},
     legend: {show: false},

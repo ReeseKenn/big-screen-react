@@ -40,15 +40,9 @@ export const Chart2 = () => {
                 }
             },
             series: [
-
                 {
                     center: ['26%', '46%'],
                     type: 'pie',
-                    colorStops: [{
-                        offset: 0, color: 'red' // 0% 处的颜色
-                    }, {
-                        offset: 1, color: 'blue' // 100% 处的颜色
-                    }],
                     radius: '60%',
                     label: {show: false},
                     labelLine: {show: false},
