@@ -6,6 +6,7 @@ import {Chart1} from "../components/chart-1";
 import {Chart2} from "../components/chart-2";
 import {Chart3} from "../components/chart-3";
 import {Chart6} from "../components/chart-6";
+import {Chart7} from "../components/chart-7";
 
 
 export const Home = () => {
@@ -23,7 +24,7 @@ export const Home = () => {
                 <section className="bordered section4">4</section>
                 <section className="bordered section5">5</section>
                 <Chart6/>
-                <section className="bordered section7">7</section>
+                <Chart7/>
                 <section className="bordered section8">8</section>
             </main>
             <footer> &copy; yan {year}</footer>
