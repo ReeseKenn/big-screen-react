@@ -1,21 +1,32 @@
 import React, {useEffect, useRef} from 'react';
 import {Title} from "./title";
 import * as echarts from "echarts";
+import {px} from "../shared/px";
 
-const px = (n) => n / 960 * (window as any).pageWidth;
 export const Chart1 = () => {
     const divRef = useRef(null)
     useEffect(() => {
-        console.log(divRef.current);
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(divRef.current);
         myChart.setOption({
+            legend: {
+                top: px(10),
+                itemWidth: px(4),
+                itemHeight: px(4),
+                itemGap: 10,
+                data: [
+                    {name: '今年', icon: 'rect'},
+                    {name: '去年', icon: 'rect'}
+                ],
+                textStyle: {
+                    color: '#475d72'
+                },
+            },
             textStyle: {
-                fontSize: px(12),
+                fontSize: px(8),
                 color: '#475d72'
             },
             title: {show: false},
-            legend: {show: false},
             xAxis: {
                 data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
                 axisTick: {show: false},
@@ -23,23 +34,24 @@ export const Chart1 = () => {
                     lineStyle: {color: '#475d72'}
                 },
                 axisLabel: {
-                    fontSize: px(10),
-                    formatter(val) {
-                        if (val.length > 2) {
-                            const array = val.split('');
-                            array.splice(2, 0, '\n');
-                            return array.join('');
-                        } else {
-                            return val;
-                        }
-                    }
+                    fontSize: px(8),
+                    // formatter(val) {
+                    //     if (val.length > 2) {
+                    //         const array = val.split('');
+                    //         array.splice(2, 0, '\n');
+                    //         return array.join('');
+                    //     } else {
+                    //         return val;
+                    //     }
+                    // }
                 },
             },
             grid: {
-                x: px(40),
-                y: px(40),
-                x2: px(0),
-                y2: px(40),
+                x: px(4),
+                y: px(10),
+                x2: px(10),
+                y2: px(10),
+                containLabel: true
             },
             yAxis: {
                 splitLine: {show: false},
@@ -48,17 +60,44 @@ export const Chart1 = () => {
                     lineStyle: {color: '#475d72'}
                 },
                 axisLabel: {
-                    fontSize: px(12)
+                    fontSize: px(8)
                 }
             },
             series: [{
+                name: '今年',
                 type: 'bar',
-                barWidth: px(10),
+                barGap: 1,
+                barWidth: px(2),
+                data: [10, 20, 36, 51, 35, 46, 37, 18, 29, 30, 65, 45],
                 itemStyle: {
-                    color: '#2b9f9f'
-                },
-                data: [10, 20, 36, 41, 15, 26, 37, 18, 29, 30, 65, 45]
-            }]
+                    normal: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                            offset: 0.2,
+                            color: '#2b9f9f'
+                        }, {
+                            offset: 1,
+                            color: 'transparent'
+                        }]),
+                    }
+                }
+            },
+                {
+                    name: '去年',
+                    type: 'bar',
+                    barWidth: px(2),
+                    data: [40, 30, 20, 41, 15, 26, 30, 26, 16, 36, 50, 20],
+                    itemStyle: {
+                        normal: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                offset: 0.2,
+                                color: '#eca850'
+                            }, {
+                                offset: 1,
+                                color: 'transparent'
+                            }]),
+                        }
+                    }
+                }]
         });
     })
     return (
