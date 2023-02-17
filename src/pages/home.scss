@@ -103,6 +103,58 @@
 
     > .section5 {
       grid-area: box5;
+
+      .chartGroup {
+        flex: 1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        .chart4 {
+          display: flex;
+          flex-direction: column;
+
+          .chart {
+            flex: 1;
+          }
+
+        }
+
+        .chart5 {
+          padding: px(12);
+          display: flex;
+          flex-direction: column;
+          gap: px(10);
+
+          .itemText {
+            display: flex;
+            justify-content: space-between;
+            color: #b0b4b9;
+            font-size: px(9);
+            padding-bottom: px(6);
+          }
+
+          .bar {
+            height: px(2);
+            width: 100%;
+            background-color: #1b3639;
+          }
+
+          .bar::before {
+            display: block;
+            counter-reset: progress var(--precent);
+            content: '';
+            height: px(2);
+            width: calc(1% * var(--precent));
+            color: #fff;
+            background: linear-gradient(to right, transparent 0%, #3fc5c6 100%);
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+          }
+        }
+
+
+      }
     }
 
     > .section6 {

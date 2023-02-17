@@ -8,6 +8,9 @@ import {Chart3} from "../components/chart-3";
 import {Chart6} from "../components/chart-6";
 import {Chart7} from "../components/chart-7";
 import {Chart8} from "../components/chart-8";
+import {Title} from "../components/title";
+import {Chart5} from "../components/chart-5";
+import {Chart4} from "../components/chart-4";
 
 
 export const Home = () => {
@@ -23,7 +26,13 @@ export const Home = () => {
                 <Chart2/>
                 <Chart3/>
                 <section className="bordered section4">4</section>
-                <section className="bordered section5">5</section>
+                <section className="bordered section5">
+                    <Title title="客户情况及店铺成交排行"/>
+                    <div className="chartGroup">
+                        <Chart4/>
+                        <Chart5/>
+                    </div>
+                </section>
                 <Chart6/>
                 <Chart7/>
                 <Chart8/>
