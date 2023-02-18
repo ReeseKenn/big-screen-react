@@ -23,10 +23,10 @@ export const Home = () => {
         <div className="home" style={{backgroundImage: `url(${bg})`}}>
             <header style={{backgroundImage: `url(${headerBg})`}}>启程跨境运营战略平台</header>
             <main>
+                <Chart9/>
                 <Chart1/>
                 <Chart2/>
                 <Chart3/>
-                <Chart9/>
                 <section className="bordered section5">
                     <Title title="客户情况及店铺成交排行"/>
                     <div className="chartGroup">

@@ -700,7 +700,7 @@ export const Chart9 = () => {
     }, []);
 
     return (
-        <section className="section4">
+        <section className="chart9">
             <div ref={divRef} className="chart"/>
         </section>
     );
