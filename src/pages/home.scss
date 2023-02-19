@@ -50,21 +50,80 @@
       }
     }
 
+    .card {
+      padding: px(4) px(8);
+      font-size: px(8);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .cardNumber {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+
+      .number {
+        font-size: px(14);
+      }
+
+      .decrease {
+        color: #eca850;
+        position: relative;
+      }
+
+      .decrease::before {
+        content: "";
+        width: 0;
+        height: 0;
+        border: px(3) solid transparent;
+        border-top-color: #eca850;
+        display: block;
+        position: absolute;
+        left: 0 - px(6);
+        top: px(3)
+      }
+
+      .increase {
+        color: #69d8d9;
+        position: relative;
+      }
+
+      .increase::before {
+        content: "";
+        width: 0;
+        height: 0;
+        border: px(3) solid transparent;
+        border-bottom-color: #69d8d9;
+        display: block;
+        position: absolute;
+        left: 0 - px(6);
+        bottom: px(3)
+      }
+    }
+
+    .cardGroup {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      grid-column-gap: px(12);
+      grid-row-gap: px(8);
+    }
+
     .other-bordered {
       border: 1px solid #33cccc;
-      border-radius: 4px;
       position: relative;
       box-shadow: 0 0 2px 0 #299696, inset 0 0 2px 0 #299696;
       background: rgba(68, 97, 96, 0.3);
 
       &::before {
+        pointer-events: none;
         content: '';
         position: absolute;
         left: 0;
         right: 0;
         bottom: 0;
         top: 0;
-        border-radius: 4px;
         box-shadow: 17px 0 0 -16px #1f5d5d,
         -17px 0 0 -16px #1f5d5d,
         0 17px 0 -16px #1f5d5d,
@@ -74,21 +133,6 @@
         0 9px 0 -8px #299696,
         0 -9px 0 -8px #299696,;
       }
-    }
-
-    .chart9 {
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      left: px(100);
-      right: px(170);
-      top: 0 - px(50);
-      bottom: px(150);
-
-      .chart {
-        flex: 1;
-      }
-
     }
 
     .chart9 {
@@ -130,6 +174,8 @@
 
     > .section4 {
       grid-area: box4;
+      display: grid;
+      grid-template-rows: 5fr 2fr;
     }
 
     > .section5 {
