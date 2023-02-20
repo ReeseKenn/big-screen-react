@@ -5,10 +5,28 @@ import {px} from "../shared/px";
 
 export const Chart1 = () => {
     const divRef = useRef(null)
+    const myChart = useRef(null)
+    const chartData = {
+        2022: [40, 30, 20, 41, 15, 26, 30, 26, 16, 36, 50, 20],
+        2023: [10, 20, 36, 51, 35, 46, 37, 18, 29, 30, 65, 45]
+    }
+    const x = useRef(true)
     useEffect(() => {
-        // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(divRef.current);
-        myChart.setOption({
+        setInterval(() => {
+            x.current = !x.current
+            const newData = x.current ? {
+                2022: [40, 30, 20, 41, 15, 26, 30, 26, 16, 36, 50, 20],
+                2023: [10, 20, 36, 51, 35, 46, 37, 18, 29, 30, 65, 45]
+            } : {
+                2022: [35, 20, 63, 48, 38, 21, 45, 23, 12, 66, 37, 41],
+                2023: [20, 43, 56, 32, 47, 38, 19, 21, 46, 53, 62, 55]
+            }
+
+            generateChart(newData);
+        }, 3000);
+    }, []);
+    const generateChart = (data) => {
+        myChart.current.setOption({
             legend: {
                 top: px(10),
                 itemWidth: px(4),
@@ -68,7 +86,7 @@ export const Chart1 = () => {
                 type: 'bar',
                 barGap: 1,
                 barWidth: px(2),
-                data: [10, 20, 36, 51, 35, 46, 37, 18, 29, 30, 65, 45],
+                data: data[2023],
                 itemStyle: {
                     normal: {
                         color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
@@ -85,7 +103,7 @@ export const Chart1 = () => {
                     name: '去年',
                     type: 'bar',
                     barWidth: px(2),
-                    data: [40, 30, 20, 41, 15, 26, 30, 26, 16, 36, 50, 20],
+                    data: data[2022],
                     itemStyle: {
                         normal: {
                             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
@@ -99,6 +117,11 @@ export const Chart1 = () => {
                     }
                 }]
         });
+    }
+    useEffect(() => {
+        // 基于准备好的dom，初始化echarts实例
+        myChart.current = echarts.init(divRef.current);
+        generateChart(chartData)
     })
     return (
         <section className="bordered section1">
