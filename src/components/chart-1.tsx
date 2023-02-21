@@ -23,7 +23,7 @@ export const Chart1 = () => {
             }
 
             generateChart(newData);
-        }, 3000);
+        }, 5000);
     }, []);
     const generateChart = (data) => {
         myChart.current.setOption({
@@ -126,7 +126,7 @@ export const Chart1 = () => {
     return (
         <section className="bordered section1">
             <Title title="订单成交数统计"/>
-            <div ref={divRef} className="chart">123</div>
+            <div ref={divRef} className="chart"/>
         </section>
     )
 }

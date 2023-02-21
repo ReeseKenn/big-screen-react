@@ -6,7 +6,7 @@ import {px} from "../shared/px";
 
 export const Chart3 = () => {
     const divRef = useRef(null);
-    const data = [
+    const x = [[
         [
             ['12.01', 170, 1],
             ['12.07', 100, 1],
@@ -27,11 +27,40 @@ export const Chart3 = () => {
             ['01.07', 270, 3],
             ['01.22', 290, 1]
         ]
-    ];
+    ], [
+        [
+            ['12.01', 270, 3],
+            ['12.07', 220, 2],
+            ['12.14', 170, 3],
+            ['12.22', 110, 1],
+            ['12.28', 220, 2],
+            ['01.10', 190, 2],
+            ['01.20', 210, 1],
+            ['01.28', 170, 2],
+        ],
+        [
+            ['12.02', 170, 2],
+            ['12.08', 160, 1],
+            ['12.15', 200, 2],
+            ['12.24', 240, 2],
+            ['12.30', 190, 1],
+            ['01.31', 230, 1],
+            ['01.07', 260, 2],
+            ['01.22', 200, 3]
+        ]
+    ]]
+    const chartData = x[0]
+    const flag = useRef(true)
+    const myChart = useRef(null);
     useEffect(() => {
-
-        var myChart1 = echarts.init(divRef.current);
-        myChart1.setOption(createEchartsOptions({
+        setInterval(() => {
+            flag.current = !flag.current
+            const newData = flag.current ? x[0] : x[1]
+            generateChart(newData);
+        }, 5000);
+    }, []);
+    const generateChart = (data) => {
+        myChart.current.setOption(createEchartsOptions({
             grid: {
                 x: px(10),
                 y: px(30),
@@ -79,7 +108,6 @@ export const Chart3 = () => {
                     data: data[0],
                     type: 'scatter',
                     symbolSize: function (data) {
-                        console.log(data)
                         // return Math.sqrt(data[2]) / 5e2;
                         return data[2] * 10;
                     },
@@ -122,13 +150,18 @@ export const Chart3 = () => {
                         borderWidth: px(1)
                     }
                 }]
-        }))
+        }));
+    }
+    useEffect(() => {
+        // 基于准备好的dom，初始化echarts实例
+        myChart.current = echarts.init(divRef.current);
+        generateChart(chartData)
     }, []);
 
     return (
         <section className="bordered section3">
             <Title title="服务流向质量趋势"/>
-            <div ref={divRef} className="chart">123</div>
+            <div ref={divRef} className="chart"/>
         </section>
     );
 };

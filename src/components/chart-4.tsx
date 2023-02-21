@@ -6,8 +6,6 @@ import {px} from "../shared/px";
 export const Chart4 = () => {
     const divRef = useRef(null);
     useEffect(() => {
-        console.log(divRef.current);
-
         const data = [
             {
                 value: 0.25,

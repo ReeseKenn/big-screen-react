@@ -6,10 +6,28 @@ import {px} from "../shared/px";
 
 export const Chart6 = () => {
     const divRef = useRef(null);
-
+    const myChart = useRef(null)
+    const chartData = {
+        0: [259, 132, 222, 80, 210, 190, 290],
+        1: [101, 305, 89, 111, 105, 68, 121]
+    }
+    const flag = useRef(true)
     useEffect(() => {
-        var myChart1 = echarts.init(divRef.current);
-        myChart1.setOption(createEchartsOptions({
+        setInterval(() => {
+            flag.current = !flag.current
+            const newData = flag.current ? {
+                0: [259, 132, 222, 80, 210, 190, 290],
+                1: [101, 305, 89, 111, 105, 68, 121]
+            } : {
+                0: [101, 305, 89, 215, 105, 68, 121],
+                1: [259, 132, 222, 80, 210, 190, 310]
+            }
+
+            generateChart(newData);
+        }, 5000);
+    }, []);
+    const generateChart = (data) => {
+        myChart.current.setOption(createEchartsOptions({
             legend: {
                 top: px(10),
                 itemWidth: 10,
@@ -53,7 +71,7 @@ export const Chart6 = () => {
                     name: '本周',
                     type: 'line',
                     symbol: 'circle',
-                    data: [259, 132, 222, 80, 210, 190, 290],
+                    data: data[0],
                     itemStyle: {
                         color: '#69d8d9',
                         shadowColor: '#69d8d9',
@@ -69,7 +87,7 @@ export const Chart6 = () => {
                     // polyline: true,
                     type: 'line',
                     symbol: 'circle',
-                    data: [101, 305, 89, 111, 105, 68, 121],
+                    data: data[1],
                     itemStyle: {
                         color: '#eca850',
                         shadowColor: '#eca850',
@@ -106,13 +124,18 @@ export const Chart6 = () => {
                 //     ]
                 // }
             ]
-        }))
+        }));
+    }
+    useEffect(() => {
+        // 基于准备好的dom，初始化echarts实例
+        myChart.current = echarts.init(divRef.current);
+        generateChart(chartData)
     }, []);
 
     return (
         <section className="bordered section6">
             <Title title="销售额趋势"/>
-            <div ref={divRef} className="chart">123</div>
+            <div ref={divRef} className="chart"/>
         </section>
     );
 };

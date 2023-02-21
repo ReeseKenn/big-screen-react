@@ -6,19 +6,44 @@ import {px} from "../shared/px";
 
 export const Chart2 = () => {
     const divRef = useRef(null);
-
+    const myChart = useRef(null);
+    const chartData = [
+        {value: 0.32, name: '宠物相关'},
+        {value: 0.25, name: '乐器相关'},
+        {value: 0.15, name: '摄影器材'},
+        {value: 0.15, name: '数码电子'},
+        {value: 0.06, name: '幼儿玩具'},
+        {value: 0.05, name: '服饰'},
+        {value: 0.02, name: '家居'}
+    ]
+    const flag = useRef(true)
     useEffect(() => {
-        const data = [
-            {value: 0.32, name: '宠物相关'},
-            {value: 0.25, name: '乐器相关'},
-            {value: 0.15, name: '摄影器材'},
-            {value: 0.15, name: '数码电子'},
-            {value: 0.06, name: '幼儿玩具'},
-            {value: 0.05, name: '服饰'},
-            {value: 0.02, name: '家居'}
-        ];
-        var myChart1 = echarts.init(divRef.current);
-        myChart1.setOption(createEchartsOptions({
+        setInterval(() => {
+            flag.current = !flag.current
+            const newData = flag.current ? [
+                {value: 0.32, name: '宠物相关'},
+                {value: 0.25, name: '乐器相关'},
+                {value: 0.15, name: '摄影器材'},
+                {value: 0.15, name: '数码电子'},
+                {value: 0.06, name: '幼儿玩具'},
+                {value: 0.05, name: '服饰'},
+                {value: 0.02, name: '家居'}
+            ] : [
+                {value: 0.15, name: '数码电子'},
+                {value: 0.06, name: '幼儿玩具'},
+                {value: 0.05, name: '服饰'},
+                {value: 0.02, name: '家居'},
+                {value: 0.32, name: '宠物相关'},
+                {value: 0.25, name: '乐器相关'},
+                {value: 0.15, name: '摄影器材'},
+
+            ]
+
+            generateChart(newData);
+        }, 5000);
+    }, []);
+    const generateChart = (data) => {
+        myChart.current.setOption(createEchartsOptions({
             xAxis: {show: false},
             yAxis: {show: false},
             grid: {x: 0, x2: 0, y: 0, y2: 0, containLabel: true},
@@ -66,12 +91,17 @@ export const Chart2 = () => {
                 '#b6cce2'
             ],
         }));
+    }
+    useEffect(() => {
+        // 基于准备好的dom，初始化echarts实例
+        myChart.current = echarts.init(divRef.current);
+        generateChart(chartData)
     }, []);
 
     return (
         <section className="bordered section2">
             <Title title="产品大类占比"/>
-            <div ref={divRef} className="chart">123</div>
+            <div ref={divRef} className="chart"/>
         </section>
     );
 };
