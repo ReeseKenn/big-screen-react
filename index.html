@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <link rel="icon" href="https://reesekenn.github.io/big-screen-react/assets/favicon.19ffa344.ico">
+    <title>启程跨境运营战略平台</title>
+    <script>
+        const clientWidth = document.documentElement.clientWidth
+        const clientHeight = document.documentElement.clientHeight
+        window.pageWidth = clientWidth / clientHeight > 8 / 5 ? clientHeight * (8 / 5) : clientWidth
+        const pageHeight = pageWidth / (8 / 5)
+        const string = `<style>html{
+      font-size: ${pageWidth / 100}px
+    }</style>`
+        document.write(string)
+    </script>
+<script type="module" crossorigin src="https://reesekenn.github.io/big-screen-react/assets/index.a6c94233.js"></script>
+  <link rel="modulepreload" href="https://reesekenn.github.io/big-screen-react/assets/vendor.daa53dbe.js">
+  <link rel="stylesheet" href="https://reesekenn.github.io/big-screen-react/assets/index.9dfe7ab4.css">
+</head>
+<body>
+<div id="root"></div>
+<script>
+    root.style.width = pageWidth + 'px'
+    root.style.height = pageHeight + 'px'
+    root.style.marginTop = (clientHeight - pageHeight) / 2 + 'px'
+</script>
+
+</body>
+</html>
